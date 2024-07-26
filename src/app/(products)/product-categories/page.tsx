@@ -1,5 +1,6 @@
 "use client";
 
+import { mockData } from "@providers/data-provider/mock";
 import {
   DeleteButton,
   EditButton,
@@ -12,15 +13,24 @@ import { Space, Table } from "antd";
 import React from "react";
 
 export default function CategoryList() {
-  const { tableProps } = useTable({
-    syncWithLocation: true,
-  });
+  // const { tableProps } = useTable({
+  //   syncWithLocation: true,
+  // });
 
   return (
     <List>
-      <Table {...tableProps} rowKey="id">
-        <Table.Column dataIndex="id" title={"ID"} />
-        <Table.Column dataIndex="title" title={"title"} />
+      {/* <Table {...tableProps} rowKey="id"> */}
+      <Table
+        dataSource={mockData["product-categories"]}
+        rowKey="productCategoryId"
+      >
+        <Table.Column dataIndex="productCategoryName" title={"Name"} />
+        <Table.Column dataIndex="note" title={"Note"} />
+        <Table.Column
+          dataIndex="isActive"
+          title={"Status"}
+          render={(val) => (val ? "Active" : "Inactive")}
+        />
         <Table.Column
           title={"Actions"}
           dataIndex="actions"

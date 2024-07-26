@@ -1,17 +1,17 @@
+import { DevtoolsProvider } from "@providers/devtools";
+import { useNotificationProvider } from "@refinedev/antd";
+import { Refine } from "@refinedev/core";
+import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
+import routerProvider from "@refinedev/nextjs-router";
 import { Metadata } from "next";
 import { cookies } from "next/headers";
 import React, { Suspense } from "react";
-import { Refine, GitHubBanner } from "@refinedev/core";
-import { DevtoolsProvider } from "@providers/devtools";
-import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
-import { useNotificationProvider } from "@refinedev/antd";
-import routerProvider from "@refinedev/nextjs-router";
 
-import { dataProvider } from "@providers/data-provider";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
-import "@refinedev/antd/dist/reset.css";
 import { ColorModeContextProvider } from "@contexts/color-mode";
 import { authProvider } from "@providers/auth-provider";
+import { dataProvider } from "@providers/data-provider";
+import "@refinedev/antd/dist/reset.css";
 
 export const metadata: Metadata = {
   title: "Refine",
@@ -34,7 +34,6 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Suspense>
-          <GitHubBanner />
           <RefineKbarProvider>
             <AntdRegistry>
               <ColorModeContextProvider defaultMode={defaultMode}>
@@ -52,16 +51,78 @@ export default function RootLayout({
                         edit: "/blog-posts/edit/:id",
                         show: "/blog-posts/show/:id",
                         meta: {
+                          hide: true,
                           canDelete: true,
                         },
                       },
                       {
                         name: "categories",
-                        list: "/categories",
-                        create: "/categories/create",
-                        edit: "/categories/edit/:id",
-                        show: "/categories/show/:id",
+                        list: "/product-categories",
+                        create: "/product-categories/create",
+                        edit: "/product-categories/edit/:id",
+                        show: "/product-categories/show/:id",
                         meta: {
+                          label: "Product Category",
+                          parent: "Product",
+                          canDelete: true,
+                        },
+                      },
+                      {
+                        name: "products",
+                        list: "/products",
+                        create: "/products/create",
+                        edit: "/products/edit/:id",
+                        show: "/products/show/:id",
+                        meta: {
+                          parent: "Product",
+                          canDelete: true,
+                        },
+                      },
+                      {
+                        name: "machines",
+                        list: "/machines",
+                        create: "/machines/create",
+                        edit: "/machines/edit/:id",
+                        show: "/machines/show/:id",
+                        meta: {
+                          label: "Machines",
+                          parent: "Machine",
+                          canDelete: true,
+                        },
+                      },
+                      {
+                        name: "machine-products",
+                        list: "/machine-products",
+                        create: "/machine-products/create",
+                        edit: "/machine-products/edit/:id",
+                        show: "/machine-products/show/:id",
+                        meta: {
+                          label: "Products",
+                          parent: "Machine",
+                          canDelete: true,
+                        },
+                      },
+                      {
+                        name: "machine-sessions",
+                        list: "/machine-sessions",
+                        create: "/machine-sessions/create",
+                        edit: "/machine-sessions/edit/:id",
+                        show: "/machine-sessions/show/:id",
+                        meta: {
+                          label: "Active Sessions",
+                          parent: "Sessions",
+                          canDelete: true,
+                        },
+                      },
+                      {
+                        name: "session-histories",
+                        list: "/session-histories",
+                        create: "/session-histories/create",
+                        edit: "/session-histories/edit/:id",
+                        show: "/session-histories/show/:id",
+                        meta: {
+                          label: "Session Histories",
+                          parent: "Sessions",
                           canDelete: true,
                         },
                       },
