@@ -19,24 +19,26 @@ const generateCategory = (name: string, note?: string): IProductCategory => {
 
 const generateProduct = (
   name: string,
+  category: IProductCategory,
   price: number,
   stock: number,
+  imageUrl?: string,
   note?: string
 ): IProduct => {
   return {
     productId: uuidv4(),
-    productCategoryId: foodCategory.productCategoryId,
-    productCategoryName: foodCategory.productCategoryName,
+    productCategoryId: category.productCategoryId,
+    productCategoryName: category.productCategoryName,
     productName: name,
-    productImageUrl: "/images/product3.jpg",
+    productImageUrl: imageUrl || "",
     productPrice: price,
     productStock: stock,
     note: note || "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     isActive: true,
     createdUserId: uuidv4(),
-    createdDate: "2022-01-01",
+    createdDate: new Date().toISOString(),
     modUserId: uuidv4(),
-    modDate: "2022-01-01",
+    modDate: new Date().toISOString(),
   };
 };
 
@@ -44,51 +46,30 @@ const foodCategory = generateCategory("Makanan", "Aneka Makanan");
 const drinkCategory = generateCategory("Minuman", "Aneka Minuman");
 const otherCategory = generateCategory("Lainnya", "Aneka Lainnya");
 
-const foodSample: IProduct = {
-  productId: "5c65fd6b-d2e0-4851-bb5a-03653159d821",
-  productCategoryId: foodCategory.productCategoryId,
-  productCategoryName: foodCategory.productCategoryName,
-  productName: "Frozen Bakmi Jawa",
-  productImageUrl: "/images/product1.jpg",
-  productPrice: 10000,
-  productStock: 100,
-  note: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  isActive: true,
-  createdUserId: uuidv4(),
-  createdDate: "2022-01-01",
-  modUserId: uuidv4(),
-  modDate: "2022-01-01",
-};
-const drinkSample: IProduct = {
-  productId: "5c65fd6b-d2e0-4851-bb5a-03653159d822",
-  productCategoryId: drinkCategory.productCategoryId,
-  productCategoryName: drinkCategory.productCategoryName,
-  productName: "Teh Botol",
-  productImageUrl: "/images/product2.jpg",
-  productPrice: 5000,
-  productStock: 50,
-  note: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  isActive: true,
-  createdUserId: uuidv4(),
-  createdDate: "2022-01-01",
-  modUserId: uuidv4(),
-  modDate: "2022-01-01",
-};
-const otherSample: IProduct = {
-  productId: "5c65fd6b-d2e0-4851-bb5a-03653159d823",
-  productCategoryId: otherCategory.productCategoryId,
-  productCategoryName: otherCategory.productCategoryName,
-  productName: "Gunting",
-  productImageUrl: "/images/product3.jpg",
-  productPrice: 8000,
-  productStock: 20,
-  note: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  isActive: true,
-  createdUserId: uuidv4(),
-  createdDate: "2022-01-01",
-  modUserId: uuidv4(),
-  modDate: "2022-01-01",
-};
+const foodSample = generateProduct(
+  "Frozen Bakmi Jawa",
+  foodCategory,
+  15000,
+  15,
+  "/image/product1.jpg",
+  "lorem ipsum"
+);
+const drinkSample = generateProduct(
+  "Teh Botol",
+  drinkCategory,
+  5000,
+  50,
+  "/image/product2.jpg",
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+);
+const otherSample = generateProduct(
+  "Gunting",
+  otherCategory,
+  8000,
+  20,
+  "/images/product3.jpg",
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+)
 
 const [machineA, machineB]: IMachine[] = [
   {
