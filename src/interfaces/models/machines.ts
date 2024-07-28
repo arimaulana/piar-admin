@@ -4,7 +4,6 @@ export type IMachineSession = {
   machineCode: string;
   machineName: string;
   clientInfo: string;
-  deviceMacAddr: string;
   sessionCode: string; // -- generated session code, will be used to show on machine and user device
   sessionDate: string; // -- full date time
   sessionKey: string; // -- unique, sha256(`machineId|clientInfo`)
