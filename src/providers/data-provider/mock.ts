@@ -113,7 +113,7 @@ const generateActiveSession = (machine: IMachine): IMachineSession => {
     machineId: machine.machineId,
     machineCode: machine.machineCode,
     machineName: machine.machineName,
-    deviceMacAddr: "0123.1-23123-1.1239",
+    clientInfo: "0123.1-23123-1.1239",
     sessionCode: `SES-${(Math.floor(Math.random() * (10000 - 1 + 1)) + 1)
       .toString()
       .padStart(5, "0")}`,

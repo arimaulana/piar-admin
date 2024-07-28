@@ -23,7 +23,7 @@ export default function ActiveSessionList() {
       <Table dataSource={mockData.activeSession} rowKey="machineSessionId">
         <Table.Column dataIndex="machineName" title={"Machine"} />
         <Table.Column dataIndex="sessionCode" title={"Session Code"} />
-        <Table.Column dataIndex="deviceMacAddr" title={"Device Mac Addr"} />
+        <Table.Column dataIndex="clientInfo" title={"Client Key"} />
         <Table.Column dataIndex="sessionDate" title={"Session Start Time"} />
         <Table.Column
           title={"Actions"}

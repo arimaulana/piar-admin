@@ -3,10 +3,11 @@ export type IMachineSession = {
   machineId: string;
   machineCode: string;
   machineName: string;
+  clientInfo: string;
   deviceMacAddr: string;
   sessionCode: string; // -- generated session code, will be used to show on machine and user device
   sessionDate: string; // -- full date time
-  sessionKey: string; // -- unique, sha256(`machineId|deviceMacAddr`)
+  sessionKey: string; // -- unique, sha256(`machineId|clientInfo`)
 };
 
 export type IMachineSessionHistory = {
@@ -14,7 +15,7 @@ export type IMachineSessionHistory = {
   machineId: string;
   machineCode: string;
   machineName: string;
-  deviceMacAddr: string;
+  clientInfo: string;
   sessionDate: string;
   sessionDuration: number; // -- in seconds, session stop time - session date
   sessionCode: string; // -- generated session code, will be used to show on machine and user device

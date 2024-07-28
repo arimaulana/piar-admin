@@ -18,7 +18,7 @@ export default function SessionHistoryList() {
       <Table dataSource={mockData.sessionHistory} rowKey="machineSessionId">
         <Table.Column dataIndex="machineName" title={"Machine"} />
         <Table.Column dataIndex="sessionCode" title={"Session Code"} />
-        <Table.Column dataIndex="deviceMacAddr" title={"Device Mac Addr"} />
+        <Table.Column dataIndex="clientInfo" title={"Client Key"} />
         <Table.Column dataIndex="productName" title={"Product"} />
         <Table.Column dataIndex="paymentMethod" title={"Payment"} />
         <Table.Column dataIndex="sessionDuration" title={"Session Duration"} />
